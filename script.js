@@ -23,9 +23,15 @@ getUsers().then(users => {
   });
 });
 
+// function getFetch(url, params = {}) {
+//   const queryString = Object.entries(params)
+//     .map(param => `${param[0]}=${param[1]}`)
+//     .join("&");
+//   return fetch(`${url}?${queryString}`).then(res => res.json());
+// }
+
 function getFetch(url, params = {}) {
-  const queryString = Object.entries(params)
-    .map(param => `${param[0]}=${param[1]}`)
-    .join("&");
-  return fetch(`${url}?${queryString}`).then(res => res.json());
+  return axios({ url: url, method: "GET", params: params }).then(
+    res => res.data
+  );
 }
